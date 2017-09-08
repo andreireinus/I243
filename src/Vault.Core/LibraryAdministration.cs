@@ -1,15 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Vault.Core.Entities;
 using Vault.Core.Repositories;
 
 namespace Vault.Core
 {
-    public class Library
+    public class LibraryAdministration
     {
         private readonly ILibraryItemRepository _repository;
 
-        public Library(ILibraryItemRepository repository)
+        public LibraryAdministration(ILibraryItemRepository repository)
         {
             _repository = repository;
         }

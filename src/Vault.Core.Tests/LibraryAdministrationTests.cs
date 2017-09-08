@@ -8,31 +8,31 @@ using Vault.Core.Repositories;
 namespace Vault.Core.Tests
 {
     [TestClass]
-    public class LibraryTests
+    public class LibraryAdministrationTests
     {
-        private Library _library;
-        private Mock<ILibraryItemRepository> _bookRepository;
+        private LibraryAdministration _admin;
+        private Mock<ILibraryItemRepository> _repository;
 
         [TestInitialize]
         public void Setup()
         {
-            _bookRepository = new Mock<ILibraryItemRepository>();
-            _library = new Library(_bookRepository.Object);
+            _repository = new Mock<ILibraryItemRepository>();
+            _admin = new LibraryAdministration(_repository.Object);
         }
 
 
         [TestMethod]
         public async Task Add_book_to_library_saves_to_repository()
         {
-            var book = new LibraryItem();
+            var libraryItem = new LibraryItem();
 
-            _bookRepository.Setup(a => a.CreateAsync(It.IsAny<LibraryItem>())).ReturnsAsync(() =>
+            _repository.Setup(a => a.CreateAsync(It.IsAny<LibraryItem>())).ReturnsAsync(() =>
             {
-                book.Id = 1;
-                return new OperationResult<LibraryItem>(book);
+                libraryItem.Id = 1;
+                return new OperationResult<LibraryItem>(libraryItem);
             });
 
-            var result = await _library.AddAsync(book);
+            var result = await _admin.AddAsync(libraryItem);
 
             result.Success.Should().BeTrue();
             result.Entity.Should().BeAssignableTo<LibraryItem>();
