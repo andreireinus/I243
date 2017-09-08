@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,6 +21,16 @@ namespace Vault.Core.Tests
             _admin = new LibraryAdministration(_repository.Object);
         }
 
+        [TestMethod]
+        public void ConstructorTests()
+        {
+            Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                // ReSharper disable ObjectCreationAsStatement
+                new LibraryAdministration(null);
+                // ReSharper restore ObjectCreationAsStatement
+            });
+        }
 
         [TestMethod]
         public async Task Add_book_to_library_saves_to_repository()

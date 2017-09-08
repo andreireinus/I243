@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Vault.Core.Entities;
 using Vault.Core.Repositories;
 
@@ -10,7 +11,7 @@ namespace Vault.Core
 
         public LibraryAdministration(ILibraryItemRepository repository)
         {
-            _repository = repository;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         public Task<OperationResult<LibraryItem>> AddAsync(LibraryItem libraryItem)
