@@ -1,2 +1,3 @@
-# I243
-Programmerimine C# keeles
+# I243 - Programmerimine C# keeles
+
+Projekti realisatsioon
