@@ -7,16 +7,16 @@ namespace Vault.Core
 {
     public class Library
     {
-        private readonly IBookRepository _repository;
+        private readonly ILibraryItemRepository _repository;
 
-        public Library(IBookRepository repository)
+        public Library(ILibraryItemRepository repository)
         {
             _repository = repository;
         }
 
-        public Task<OperationResult<Book>> AddAsync(Book book)
+        public Task<OperationResult<LibraryItem>> AddAsync(LibraryItem libraryItem)
         {
-            return _repository.CreateAsync(book);
+            return _repository.CreateAsync(libraryItem);
         }
     }
 }

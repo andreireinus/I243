@@ -2,7 +2,7 @@
 
 namespace Vault.Core.Repositories
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface ILibraryItemRepository : IRepository<LibraryItem>
     {
     }
 }
