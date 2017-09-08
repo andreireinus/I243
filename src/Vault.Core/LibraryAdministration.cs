@@ -7,16 +7,32 @@ namespace Vault.Core
 {
     public class LibraryAdministration
     {
-        private readonly ILibraryItemRepository _repository;
+        private readonly ILibraryItemRepository _libraryItemRepository;
+        private readonly ILendingRecordRepository _lendingRepository;
 
-        public LibraryAdministration(ILibraryItemRepository repository)
+        public LibraryAdministration(ILibraryItemRepository libraryItemRepository, ILendingRecordRepository lendingRepository)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _libraryItemRepository = libraryItemRepository ?? throw new ArgumentNullException(nameof(libraryItemRepository));
+            _lendingRepository = lendingRepository ?? throw new ArgumentNullException(nameof(lendingRepository));
         }
 
         public Task<OperationResult<LibraryItem>> AddAsync(LibraryItem libraryItem)
         {
-            return _repository.CreateAsync(libraryItem);
+            return _libraryItemRepository.CreateAsync(libraryItem);
+        }
+
+        public Task<OperationResult<LendingRecord>> CheckoutAsync(Lender lender, LibraryItem item, DateTime to)
+        {
+            var record = new LendingRecord
+            {
+                From = DateTime.Now,
+                To = DateTime.Now.AddDays(14),
+                Lender = lender,
+                LibraryItem = item,
+                Returned = null
+            };
+
+            return _lendingRepository.CreateAsync(record);
         }
     }
 }

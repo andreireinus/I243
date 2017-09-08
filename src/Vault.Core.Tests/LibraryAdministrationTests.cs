@@ -12,24 +12,30 @@ namespace Vault.Core.Tests
     public class LibraryAdministrationTests
     {
         private LibraryAdministration _admin;
-        private Mock<ILibraryItemRepository> _repository;
+        private Mock<ILibraryItemRepository> _libraryRepository;
+        private Mock<ILendingRecordRepository> _lendingRepository;
 
         [TestInitialize]
         public void Setup()
         {
-            _repository = new Mock<ILibraryItemRepository>();
-            _admin = new LibraryAdministration(_repository.Object);
+            _libraryRepository = new Mock<ILibraryItemRepository>();
+            _lendingRepository = new Mock<ILendingRecordRepository>();
+            _admin = new LibraryAdministration(_libraryRepository.Object, _lendingRepository.Object);
         }
 
         [TestMethod]
         public void ConstructorTests()
         {
+            // ReSharper disable ObjectCreationAsStatement
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                // ReSharper disable ObjectCreationAsStatement
-                new LibraryAdministration(null);
-                // ReSharper restore ObjectCreationAsStatement
+                new LibraryAdministration(null, null);
             });
+            Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                new LibraryAdministration(_libraryRepository.Object, null);
+            });
+            // ReSharper restore ObjectCreationAsStatement
         }
 
         [TestMethod]
@@ -37,7 +43,7 @@ namespace Vault.Core.Tests
         {
             var libraryItem = new LibraryItem();
 
-            _repository.Setup(a => a.CreateAsync(It.IsAny<LibraryItem>())).ReturnsAsync(() =>
+            _libraryRepository.Setup(a => a.CreateAsync(It.IsAny<LibraryItem>())).ReturnsAsync(() =>
             {
                 libraryItem.Id = 1;
                 return new OperationResult<LibraryItem>(libraryItem);
@@ -48,6 +54,28 @@ namespace Vault.Core.Tests
             result.Success.Should().BeTrue();
             result.Entity.Should().BeAssignableTo<LibraryItem>();
             result.Entity.Id.Should().NotBe(0);
+        }
+
+        [TestMethod]
+        public async Task Checkout_when_lending_out_available_item_then_lending_record_is_created_for_lender()
+        {
+            _lendingRepository.Setup(a => a.CreateAsync(It.IsAny<LendingRecord>()))
+                .ReturnsAsync((LendingRecord a) => new OperationResult<LendingRecord>(a));
+
+            var lender = new Lender();
+            var item = new LibraryItem();
+            var to = DateTime.Now.AddDays(14);
+
+            var result = await _admin.CheckoutAsync(lender, item, to);
+
+            result.Success.Should().BeTrue();
+            result.Entity.Should().BeAssignableTo<LendingRecord>();
+            result.Entity.From.Should().BeSameDateAs(DateTime.Now);
+            result.Entity.To.Should().BeSameDateAs(to);
+            result.Entity.LibraryItem.Should().Be(item);
+            result.Entity.Lender.Should().Be(lender);
+
+            _lendingRepository.Verify(a => a.CreateAsync(It.IsAny<LendingRecord>()), Times.Once);
         }
     }
 }
