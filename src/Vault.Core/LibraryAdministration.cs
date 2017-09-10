@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Vault.Core.Entities;
 using Vault.Core.Repositories;
@@ -19,6 +20,11 @@ namespace Vault.Core
         public Task<OperationResult<LibraryItem>> AddAsync(LibraryItem libraryItem)
         {
             return _libraryItemRepository.CreateAsync(libraryItem);
+        }
+
+        public Task<LibraryItem[]> AvailableItemsAsync()
+        {
+            return _libraryItemRepository.AvailableItemsAsync();
         }
 
         public Task<OperationResult<LendingRecord>> CheckoutAsync(Lender lender, LibraryItem item, DateTime to)

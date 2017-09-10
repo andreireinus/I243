@@ -77,5 +77,12 @@ namespace Vault.Core.Tests
 
             _lendingRepository.Verify(a => a.CreateAsync(It.IsAny<LendingRecord>()), Times.Once);
         }
+
+        [TestMethod]
+        public async Task AvailableItems_return_data_from_repository()
+        {
+            await _admin.AvailableItemsAsync();
+            _libraryRepository.Verify(a => a.AvailableItemsAsync(), Times.Once);
+        }
     }
 }

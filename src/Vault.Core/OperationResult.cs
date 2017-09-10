@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
 using System.Text;
 
@@ -14,12 +15,26 @@ namespace Vault.Core
             Success = true;
         }
 
+        public OperationResult(string[] errorMessages) : base(errorMessages)
+        {
+        }
+
         public T Entity { get; }
     }
 
     public class OperationResult
     {
+        public OperationResult()
+        {
+        }
+
+        protected OperationResult(string[] errorMessages)
+        {
+            ErrorMessages = errorMessages;
+            Success = !errorMessages.Any();
+        }
+
         public bool Success { get; protected set; } = true;
-        public string[] ErrorMessages { get; set; }
+        public string[] ErrorMessages { get; protected set; } = { };
     }
 }
