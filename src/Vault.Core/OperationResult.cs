@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Vault.Core
 {
-    public class OperationResult<T>
+    
+    public class OperationResult<T> : OperationResult
     {
         public OperationResult(T entity)
         {
@@ -13,8 +14,12 @@ namespace Vault.Core
             Success = true;
         }
 
-        public bool Success { get; }
-        public T Entity { get; set; }
+        public T Entity { get; }
+    }
+
+    public class OperationResult
+    {
+        public bool Success { get; protected set; } = true;
         public string[] ErrorMessages { get; set; }
     }
 }
