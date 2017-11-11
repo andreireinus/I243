@@ -17,7 +17,12 @@ namespace Vault.UI.Admin.Infrastructure
 
         public Task<OperationResult<T>> CreateAsync(T entity)
         {
-            entity.Id = Items.Max(a => a.Id) + 1;
+            entity.Id =1;
+            if (Items.Any())
+            {
+                entity.Id = Items.Max(a => a.Id) + 1;
+            }
+
             Items.Add(entity);
 
             return Task.FromResult(new OperationResult<T>(entity));

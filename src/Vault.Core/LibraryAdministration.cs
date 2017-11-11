@@ -22,6 +22,11 @@ namespace Vault.Core
             return _libraryItemRepository.CreateAsync(libraryItem);
         }
 
+        public Task<OperationResult<LibraryItem>> UpdateAsync(LibraryItem item)
+        {
+            return _libraryItemRepository.UpdateAsync(item);
+        }
+
         public Task<LibraryItem[]> AvailableItemsAsync()
         {
             return _libraryItemRepository.AvailableItemsAsync();
@@ -39,6 +44,11 @@ namespace Vault.Core
             };
 
             return _lendingRepository.CreateAsync(record);
+        }
+
+        public Task<LibraryItem> GetAsync(int id)
+        {
+            return _libraryItemRepository.GetAsync(id);
         }
     }
 }

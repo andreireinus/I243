@@ -54,6 +54,7 @@ namespace Vault.UI.Admin
             services.AddScoped<LibraryAdministration>();
             services.AddScoped<ILibraryItemRepository, LibraryItemRepository>();
             services.AddScoped<ILendingRecordRepository, LendingRecordRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
         }
     }
 }
