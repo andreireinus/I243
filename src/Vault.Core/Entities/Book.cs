@@ -5,6 +5,7 @@ namespace Vault.Core.Entities
     public class Book : IEntity
     {
         public int Id { get; set; }
+        public string Author { get; set; }
         public string Name { get; set; }
         public Location Location { get; set; }
         public bool IsAvailable { get; set; }

@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Vault.UI.AdminForm.ClientApi;
 
 namespace Vault.UI.AdminForm
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private readonly IVaultAPI _api;
+
+        private MainForm()
         {
             InitializeComponent();
         }
 
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        public MainForm(IVaultAPI api) : this()
+        {
+            _api = api;
+        }
+
+        private void btnCreateLibraryItem_Click(object sender, System.EventArgs e)
         {
 
         }

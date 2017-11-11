@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
+using Vault.Core;
+using Vault.Core.Entities;
 
 namespace Vault.UI.AdminRestApi
 {
@@ -24,9 +21,16 @@ namespace Vault.UI.AdminRestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Vault API", Version = "v1" });
+            });
+
+            ConfigureIoc(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -35,6 +39,13 @@ namespace Vault.UI.AdminRestApi
             }
 
             app.UseMvc();
+            app.UseSwagger();
+        }
+
+        private static void ConfigureIoc(IServiceCollection services)
+        {
+            services.AddScoped<ICrudInteractor<Book>, CrudInteractor<Book>>();
+            services.AddScoped<ICrudInteractor<Lender>, CrudInteractor<Lender>>();
         }
     }
 }

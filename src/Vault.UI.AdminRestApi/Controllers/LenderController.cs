@@ -8,32 +8,32 @@ using Vault.UI.AdminRestApi.Infrastructure;
 namespace Vault.UI.AdminRestApi.Controllers
 {
     [Route("api/[controller]")]
-    public class BookController : CrudController<Book>
+    public class LenderController : CrudController<Lender>
     {
-        public BookController(ICrudInteractor<Book> interactor) : base(interactor)
+        public LenderController(ICrudInteractor<Lender> interactor) : base(interactor)
         {
         }
 
-        [SwaggerOperation("BookCreate")]
-        public override Task<Book> Create(Book entity)
+        [SwaggerOperation("LenderCreate")]
+        public override Task<Lender> Create(Lender entity)
         {
             return base.Create(entity);
         }
 
-        [SwaggerOperation("BookUpdate")]
-        public override Task<Book> Update(int id, Book entity)
+        [SwaggerOperation("LenderUpdate")]
+        public override Task<Lender> Update(int id, Lender entity)
         {
             return base.Update(id, entity);
         }
 
-        [SwaggerOperation("BookGetAll")]
-        public override Task<Book[]> GetAll()
+        [SwaggerOperation("LenderGetAll")]
+        public override Task<Lender[]> GetAll()
         {
             return base.GetAll();
         }
 
-        [SwaggerOperation("BookGet")]
-        public override Task<Book> Get(int id)
+        [SwaggerOperation("LenderGet")]
+        public override Task<Lender> Get(int id)
         {
             return base.Get(id);
         }
