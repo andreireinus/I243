@@ -2,7 +2,7 @@
 
 namespace Vault.Core.Entities
 {
-    public class Lender
+    public class Lender : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

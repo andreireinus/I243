@@ -30,7 +30,6 @@ namespace Vault.Core
             }
 
             item = await _repository.GetAsync(item.Id);
-
             if (item == null)
             {
                 return new OperationResult<LibraryItem>(new [] {"Library item not found in database."});
