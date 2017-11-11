@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26823.1
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vault.Core.Tests", "Vault.Core.Tests\Vault.Core.Tests.csproj", "{16DF275F-9DD4-4876-933E-06385AB6496B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vault.Core.Tests", "Vault.Core.Tests\Vault.Core.Tests.csproj", "{16DF275F-9DD4-4876-933E-06385AB6496B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vault.Core", "Vault.Core\Vault.Core.csproj", "{D8CE49D4-BBF1-44D5-A392-C41F4E1952FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vault.Core", "Vault.Core\Vault.Core.csproj", "{D8CE49D4-BBF1-44D5-A392-C41F4E1952FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vault.UI.Admin", "Vault.UI.Admin\Vault.UI.Admin.csproj", "{553F2C7C-36D8-4E0D-829B-4A550BF7021B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D8CE49D4-BBF1-44D5-A392-C41F4E1952FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8CE49D4-BBF1-44D5-A392-C41F4E1952FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8CE49D4-BBF1-44D5-A392-C41F4E1952FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{553F2C7C-36D8-4E0D-829B-4A550BF7021B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553F2C7C-36D8-4E0D-829B-4A550BF7021B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553F2C7C-36D8-4E0D-829B-4A550BF7021B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553F2C7C-36D8-4E0D-829B-4A550BF7021B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
