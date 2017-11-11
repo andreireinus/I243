@@ -44,10 +44,5 @@ namespace Vault.Core
 
             return _lendingRepository.CreateAsync(record);
         }
-
-        public Task<LibraryItem> GetAsync(int id)
-        {
-            return _libraryItemRepository.GetAsync(id);
-        }
     }
 }

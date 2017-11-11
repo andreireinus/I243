@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Vault.Core;
+using Vault.Core.Entities;
 using Vault.Core.Repositories;
 using Vault.UI.Admin.Infrastructure;
 using Vault.UI.Admin.ModelMapping;
@@ -11,20 +12,20 @@ namespace Vault.UI.Admin.Controllers
 {
     public class LibraryController : Controller
     {
-        private readonly LibraryAdministration _administration;
+        private readonly ICrudInteractor<LibraryItem> _crudInteractor;
         private readonly ILocationRepository _locationRepository;
 
-        public LibraryController(LibraryAdministration administration, ILocationRepository locationRepository)
+        public LibraryController(ILocationRepository locationRepository, ICrudInteractor<LibraryItem> crudInteractor)
         {
-            _administration = administration ?? throw new ArgumentNullException(nameof(administration));
+            _crudInteractor = crudInteractor ?? throw new ArgumentNullException(nameof(crudInteractor));
             _locationRepository = locationRepository ?? throw new ArgumentNullException(nameof(locationRepository));
         }
 
         public async Task<IActionResult> Index()
         {
-            var items = (await _administration.AvailableItemsAsync()).ToViewModel();
+            var result = await _crudInteractor.GetAllAsync();
 
-            return View(items);
+            return View(result.Entity.ToViewModel());
         }
 
         public async Task<IActionResult> Create()
@@ -39,7 +40,7 @@ namespace Vault.UI.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _administration.AddAsync(model.ToLibaryItem());
+                var result = await _crudInteractor.CreateAsync(model.ToLibaryItem());
 
                 if (result.Success)
                 {
@@ -55,13 +56,13 @@ namespace Vault.UI.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var item = await _administration.GetAsync(id);
-            if (item == null)
+            var result = await _crudInteractor.GetAsync(id);
+            if (!result.Success)
             {
                 return NotFound();
             }
 
-            var model = item.ToEditViewModel();
+            var model = result.Entity.ToEditViewModel();
             model.Locations = (await _locationRepository.GetAllAsync()).ToSelectListItem();
             return View(model);
         }
@@ -70,14 +71,13 @@ namespace Vault.UI.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var item = await _administration.GetAsync(model.Id);
-                if (item == null)
+                var result = await _crudInteractor.GetAsync(model.Id);
+                if (!result.Success)
                 {
                     return NotFound();
                 }
 
-                var result = await _administration.UpdateAsync(model.ToLibaryItem(item));
-
+                result = await _crudInteractor.UpdateAsync(model.ToLibaryItem(result.Entity));
                 if (result.Success)
                 {
                     return RedirectToAction("Details", result.Entity.Id);

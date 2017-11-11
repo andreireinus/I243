@@ -15,7 +15,7 @@ namespace Vault.Core.Tests
         private StockHandling _handling;
         private Mock<ILibraryItemRepository> _repository;
         private LibraryItem _item;
-        private byte[] _validBytes = {1,2,3,4,6};
+        private byte[] _validBytes = { 1, 2, 3, 4, 6 };
 
         [TestInitialize]
         public void Setup()
@@ -34,7 +34,7 @@ namespace Vault.Core.Tests
         {
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () =>
             {
-                await _handling.AddImageAsync(null, new byte[] {1});
+                await _handling.AddImageAsync(null, new byte[] { 1 });
             });
         }
 
@@ -43,8 +43,8 @@ namespace Vault.Core.Tests
         {
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () =>
                 {
-                await _handling.AddImageAsync(_item, null);
-            });
+                    await _handling.AddImageAsync(_item, null);
+                });
         }
 
         [TestMethod]
@@ -52,7 +52,7 @@ namespace Vault.Core.Tests
         {
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () =>
             {
-                    await _handling.AddImageAsync(_item, new byte[] { });
+                await _handling.AddImageAsync(_item, new byte[] { });
             });
         }
 
@@ -61,7 +61,7 @@ namespace Vault.Core.Tests
         public async Task AddImageAsync_when_item_is_not_found_in_repository_error_returned()
         {
             // Arrange
-            _repository.Setup(a => a.GetAsync(It.IsAny<int>())).ReturnsAsync((LibraryItem) null);
+            _repository.Setup(a => a.GetAsync(It.IsAny<int>())).ReturnsAsync(new OperationResult<LibraryItem>((LibraryItem)null));
 
             // Act
             var result = await _handling.AddImageAsync(_item, _validBytes);
@@ -75,7 +75,7 @@ namespace Vault.Core.Tests
         {
             // Arrange
             _repository.Setup(a => a.GetAsync(It.IsAny<int>()))
-                .ReturnsAsync(_item);
+                .ReturnsAsync(new OperationResult<LibraryItem>(_item));
             _repository.Setup(a => a.UpdateAsync(It.IsAny<LibraryItem>()))
                 .ReturnsAsync((LibraryItem item) => new OperationResult<LibraryItem>(item));
 

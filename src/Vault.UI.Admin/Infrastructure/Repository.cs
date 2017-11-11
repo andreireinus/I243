@@ -10,14 +10,19 @@ namespace Vault.UI.Admin.Infrastructure
     {
         protected static readonly List<T> Items = new List<T>();
 
-        public Task<T> GetAsync(int id)
+        public IQueryable<T> Query()
         {
-            return Task.FromResult(Items.Find(e => e.Id == id));
+            return Items.AsQueryable();
+        }
+
+        public Task<OperationResult<T>> GetAsync(int id)
+        {
+            return Task.FromResult(new OperationResult<T>(Items.Find(e => e.Id == id)));
         }
 
         public Task<OperationResult<T>> CreateAsync(T entity)
         {
-            entity.Id =1;
+            entity.Id = 1;
             if (Items.Any())
             {
                 entity.Id = Items.Max(a => a.Id) + 1;

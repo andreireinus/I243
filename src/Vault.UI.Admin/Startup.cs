@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Vault.Core;
+using Vault.Core.Entities;
 using Vault.Core.Repositories;
 using Vault.UI.Admin.Infrastructure;
 
@@ -55,6 +56,16 @@ namespace Vault.UI.Admin
             services.AddScoped<ILibraryItemRepository, LibraryItemRepository>();
             services.AddScoped<ILendingRecordRepository, LendingRecordRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
+
+
+            services.AddScoped<IRepository<LibraryItem>, LibraryItemRepository>();
+            services.AddScoped<IRepository<LendingRecord>, LendingRecordRepository>();
+            services.AddScoped<IRepository<Location>, LocationRepository>();
+            services.AddScoped<IRepository<Lender>, LenderRepository>();
+
+            services.AddScoped<ICrudInteractor<LibraryItem>, CrudInteractor<LibraryItem>>();
+            services.AddScoped<ICrudInteractor<Lender>, CrudInteractor<Lender>>();
+            services.AddScoped<ICrudInteractor<Location>, CrudInteractor<Location>>();
         }
     }
 }
