@@ -16,29 +16,29 @@ namespace Vault.Core
             _lendingRepository = lendingRepository ?? throw new ArgumentNullException(nameof(lendingRepository));
         }
 
-        public Task<OperationResult<LibraryItem>> AddAsync(LibraryItem libraryItem)
+        public Task<OperationResult<Book>> AddAsync(Book book)
         {
-            return _libraryItemRepository.CreateAsync(libraryItem);
+            return _libraryItemRepository.CreateAsync(book);
         }
 
-        public Task<OperationResult<LibraryItem>> UpdateAsync(LibraryItem item)
+        public Task<OperationResult<Book>> UpdateAsync(Book item)
         {
             return _libraryItemRepository.UpdateAsync(item);
         }
 
-        public Task<LibraryItem[]> AvailableItemsAsync()
+        public Task<Book[]> AvailableItemsAsync()
         {
             return _libraryItemRepository.AvailableItemsAsync();
         }
 
-        public Task<OperationResult<LendingRecord>> CheckoutAsync(Lender lender, LibraryItem item, DateTime to)
+        public Task<OperationResult<LendingRecord>> CheckoutAsync(Lender lender, Book item, DateTime to)
         {
             var record = new LendingRecord
             {
                 From = DateTime.Now,
                 To = DateTime.Now.AddDays(14),
                 Lender = lender,
-                LibraryItem = item,
+                Book = item,
                 Returned = null
             };
 

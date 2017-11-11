@@ -41,18 +41,18 @@ namespace Vault.Core.Tests
         [TestMethod]
         public async Task Add_book_to_library_saves_to_repository()
         {
-            var libraryItem = new LibraryItem();
+            var libraryItem = new Book();
 
-            _libraryRepository.Setup(a => a.CreateAsync(It.IsAny<LibraryItem>())).ReturnsAsync(() =>
+            _libraryRepository.Setup(a => a.CreateAsync(It.IsAny<Book>())).ReturnsAsync(() =>
             {
                 libraryItem.Id = 1;
-                return new OperationResult<LibraryItem>(libraryItem);
+                return new OperationResult<Book>(libraryItem);
             });
 
             var result = await _admin.AddAsync(libraryItem);
 
             result.Success.Should().BeTrue();
-            result.Entity.Should().BeAssignableTo<LibraryItem>();
+            result.Entity.Should().BeAssignableTo<Book>();
             result.Entity.Id.Should().NotBe(0);
         }
 
@@ -63,7 +63,7 @@ namespace Vault.Core.Tests
                 .ReturnsAsync((LendingRecord a) => new OperationResult<LendingRecord>(a));
 
             var lender = new Lender();
-            var item = new LibraryItem();
+            var item = new Book();
             var to = DateTime.Now.AddDays(14);
 
             var result = await _admin.CheckoutAsync(lender, item, to);
@@ -72,7 +72,7 @@ namespace Vault.Core.Tests
             result.Entity.Should().BeAssignableTo<LendingRecord>();
             result.Entity.From.Should().BeSameDateAs(DateTime.Now);
             result.Entity.To.Should().BeSameDateAs(to);
-            result.Entity.LibraryItem.Should().Be(item);
+            result.Entity.Book.Should().Be(item);
             result.Entity.Lender.Should().Be(lender);
 
             _lendingRepository.Verify(a => a.CreateAsync(It.IsAny<LendingRecord>()), Times.Once);

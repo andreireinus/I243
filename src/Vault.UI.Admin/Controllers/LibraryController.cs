@@ -12,10 +12,10 @@ namespace Vault.UI.Admin.Controllers
 {
     public class LibraryController : Controller
     {
-        private readonly ICrudInteractor<LibraryItem> _crudInteractor;
+        private readonly ICrudInteractor<Book> _crudInteractor;
         private readonly ILocationRepository _locationRepository;
 
-        public LibraryController(ILocationRepository locationRepository, ICrudInteractor<LibraryItem> crudInteractor)
+        public LibraryController(ILocationRepository locationRepository, ICrudInteractor<Book> crudInteractor)
         {
             _crudInteractor = crudInteractor ?? throw new ArgumentNullException(nameof(crudInteractor));
             _locationRepository = locationRepository ?? throw new ArgumentNullException(nameof(locationRepository));

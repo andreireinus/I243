@@ -14,7 +14,7 @@ namespace Vault.Core.Tests
     {
         private StockHandling _handling;
         private Mock<ILibraryItemRepository> _repository;
-        private LibraryItem _item;
+        private Book _item;
         private byte[] _validBytes = { 1, 2, 3, 4, 6 };
 
         [TestInitialize]
@@ -24,7 +24,7 @@ namespace Vault.Core.Tests
 
             _handling = new StockHandling(_repository.Object);
 
-            _item = new LibraryItem
+            _item = new Book
             {
             };
         }
@@ -61,7 +61,7 @@ namespace Vault.Core.Tests
         public async Task AddImageAsync_when_item_is_not_found_in_repository_error_returned()
         {
             // Arrange
-            _repository.Setup(a => a.GetAsync(It.IsAny<int>())).ReturnsAsync(new OperationResult<LibraryItem>((LibraryItem)null));
+            _repository.Setup(a => a.GetAsync(It.IsAny<int>())).ReturnsAsync(new OperationResult<Book>((Book)null));
 
             // Act
             var result = await _handling.AddImageAsync(_item, _validBytes);
@@ -75,9 +75,9 @@ namespace Vault.Core.Tests
         {
             // Arrange
             _repository.Setup(a => a.GetAsync(It.IsAny<int>()))
-                .ReturnsAsync(new OperationResult<LibraryItem>(_item));
-            _repository.Setup(a => a.UpdateAsync(It.IsAny<LibraryItem>()))
-                .ReturnsAsync((LibraryItem item) => new OperationResult<LibraryItem>(item));
+                .ReturnsAsync(new OperationResult<Book>(_item));
+            _repository.Setup(a => a.UpdateAsync(It.IsAny<Book>()))
+                .ReturnsAsync((Book item) => new OperationResult<Book>(item));
 
             // Act
             var result = await _handling.AddImageAsync(_item, _validBytes);

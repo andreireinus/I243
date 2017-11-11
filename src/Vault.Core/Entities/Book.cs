@@ -2,7 +2,7 @@
 
 namespace Vault.Core.Entities
 {
-    public class LibraryItem : IEntity
+    public class Book : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

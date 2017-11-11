@@ -3,9 +3,9 @@ using Vault.Core.Entities;
 
 namespace Vault.Core.Repositories
 {
-    public interface ILibraryItemRepository : IRepository<LibraryItem>
+    public interface ILibraryItemRepository : IRepository<Book>
     {
-        Task<LibraryItem[]> AvailableItemsAsync();
+        Task<Book[]> AvailableItemsAsync();
         
     }
 }

@@ -17,7 +17,7 @@ namespace Vault.Core
         }
 
 
-        public async Task<OperationResult<LibraryItem>> AddImageAsync(LibraryItem item, byte[] image)
+        public async Task<OperationResult<Book>> AddImageAsync(Book item, byte[] image)
         {
             if (item == null)
             {
@@ -34,14 +34,14 @@ namespace Vault.Core
             item = result.Entity;
             if (item == null)
             {
-                return new OperationResult<LibraryItem>(new [] {"Library item not found in database."});
+                return new OperationResult<Book>(new [] {"Library item not found in database."});
             }
 
             item.Pictures = item.Pictures ?? new List<Picture>();
             item.Pictures.Add(new Picture
             {
                 Bytes = image,
-                LibraryItem = item,
+                Book = item,
             });
 
             return await _repository.UpdateAsync(item);

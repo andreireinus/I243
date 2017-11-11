@@ -6,7 +6,7 @@ namespace Vault.UI.Admin.ModelMapping
 {
     public static class LibraryItemExtensions
     {
-        public static EditViewModel ToEditViewModel(this LibraryItem item)
+        public static EditViewModel ToEditViewModel(this Book item)
         {
             return new EditViewModel
             {
@@ -16,7 +16,7 @@ namespace Vault.UI.Admin.ModelMapping
             };
         }
 
-        public static IndexViewModel[] ToViewModel(this LibraryItem[] items)
+        public static IndexViewModel[] ToViewModel(this Book[] items)
         {
             return items.Select(i => new IndexViewModel()
             {
@@ -29,9 +29,9 @@ namespace Vault.UI.Admin.ModelMapping
             }).ToArray();
         }
 
-        public static LibraryItem ToLibaryItem(this CreateViewModel model)
+        public static Book ToLibaryItem(this CreateViewModel model)
         {
-            return new LibraryItem
+            return new Book
             {
                 IsAvailable = true,
                 Name = model.Name,
@@ -42,7 +42,7 @@ namespace Vault.UI.Admin.ModelMapping
             };
         }
 
-        public static LibraryItem ToLibaryItem(this EditViewModel source, LibraryItem destination)
+        public static Book ToLibaryItem(this EditViewModel source, Book destination)
         {
             destination.Name = source.Name;
             destination.Location.Id = source.LocationId;

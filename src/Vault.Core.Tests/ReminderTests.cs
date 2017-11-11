@@ -65,7 +65,7 @@ namespace Vault.Core.Tests
                 {
                     From = DateTime.Now.AddDays(-30),
                     To = DateTime.Now.AddDays(-2),
-                    LibraryItem = new LibraryItem {Name = "BOOK1"},
+                    Book = new Book {Name = "BOOK1"},
                     Lender = new Lender {Name = "John Doe", Email = "john.doe@gmail.com"}
                 }
             });

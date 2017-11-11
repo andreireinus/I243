@@ -5,9 +5,9 @@ using Vault.Core.Repositories;
 
 namespace Vault.UI.Admin.Infrastructure
 {
-    public class LibraryItemRepository : Repository<LibraryItem>, ILibraryItemRepository
+    public class LibraryItemRepository : Repository<Book>, ILibraryItemRepository
     {
-        public Task<LibraryItem[]> AvailableItemsAsync()
+        public Task<Book[]> AvailableItemsAsync()
         {
             return Task.FromResult(Items.Where(a => a.IsAvailable).ToArray());
         }

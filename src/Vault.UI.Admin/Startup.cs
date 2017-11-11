@@ -58,12 +58,12 @@ namespace Vault.UI.Admin
             services.AddScoped<ILocationRepository, LocationRepository>();
 
 
-            services.AddScoped<IRepository<LibraryItem>, LibraryItemRepository>();
+            services.AddScoped<IRepository<Book>, LibraryItemRepository>();
             services.AddScoped<IRepository<LendingRecord>, LendingRecordRepository>();
             services.AddScoped<IRepository<Location>, LocationRepository>();
             services.AddScoped<IRepository<Lender>, LenderRepository>();
 
-            services.AddScoped<ICrudInteractor<LibraryItem>, CrudInteractor<LibraryItem>>();
+            services.AddScoped<ICrudInteractor<Book>, CrudInteractor<Book>>();
             services.AddScoped<ICrudInteractor<Lender>, CrudInteractor<Lender>>();
             services.AddScoped<ICrudInteractor<Location>, CrudInteractor<Location>>();
         }
