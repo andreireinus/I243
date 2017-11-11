@@ -9,16 +9,16 @@ namespace Vault.UI.Admin.Infrastructure
         where TCreateVm : class, new()
         where TUpdateVm : class, IEntity
     {
-        protected readonly ICrudInteractor<T> Interactor;
+        private readonly ICrudInteractor<T> _interactor;
 
         protected CrudController(ICrudInteractor<T> interactor)
         {
-            Interactor = interactor;
+            _interactor = interactor;
         }
 
         public async Task<IActionResult> Index()
         {
-            var result = await Interactor.GetAllAsync();
+            var result = await _interactor.GetAllAsync();
 
             return View("Index", MapToIndexViewModel(result.Entity));
         }
@@ -34,7 +34,7 @@ namespace Vault.UI.Admin.Infrastructure
         {
             if (ModelState.IsValid)
             {
-                var result = await Interactor.CreateAsync(MapFromCreateViewModel(model));
+                var result = await _interactor.CreateAsync(MapFromCreateViewModel(model));
 
                 if (result.Success)
                 {
@@ -51,7 +51,7 @@ namespace Vault.UI.Admin.Infrastructure
 
         public async Task<IActionResult> Edit(int id)
         {
-            var result = await Interactor.GetAsync(id);
+            var result = await _interactor.GetAsync(id);
             if (!result.Success)
             {
                 return NotFound();
@@ -66,13 +66,13 @@ namespace Vault.UI.Admin.Infrastructure
         {
             if (ModelState.IsValid)
             {
-                var result = await Interactor.GetAsync(model.Id);
+                var result = await _interactor.GetAsync(model.Id);
                 if (!result.Success)
                 {
                     return NotFound();
                 }
 
-                result = await Interactor.UpdateAsync(MapFromUpdateViewModel(result.Entity, model));
+                result = await _interactor.UpdateAsync(MapFromUpdateViewModel(result.Entity, model));
                 if (result.Success)
                 {
                     return RedirectToAction("Details", result.Entity.Id);
@@ -85,12 +85,10 @@ namespace Vault.UI.Admin.Infrastructure
             return View("Edit", model);
         }
 
-
         public IActionResult Details(int id)
         {
             throw new System.NotImplementedException();
         }
-
 
         public abstract TIndexVm[] MapToIndexViewModel(T[] source);
         public abstract T MapFromCreateViewModel(TCreateVm source);
