@@ -1,5 +1,3 @@
-using System;
-
 namespace Vault.UI.Admin.Models
 {
     public class ErrorViewModel

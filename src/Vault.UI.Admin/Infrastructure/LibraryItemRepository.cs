@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using Vault.Core;
 using Vault.Core.Entities;
 using Vault.Core.Repositories;
 

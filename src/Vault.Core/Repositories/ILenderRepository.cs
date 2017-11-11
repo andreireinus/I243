@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Vault.Core.Entities;
+﻿using Vault.Core.Entities;
 
 namespace Vault.Core.Repositories
 {
