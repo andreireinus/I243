@@ -1,10 +1,15 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Vault.Core;
 using Vault.Core.Entities;
+using Vault.Core.Repositories;
+using Vault.DataBase;
+using Vault.DataBase.Repositories;
+using Vault.UI.AdminRestApi.Infrastructure;
 
 namespace Vault.UI.AdminRestApi
 {
@@ -42,10 +47,22 @@ namespace Vault.UI.AdminRestApi
             app.UseSwagger();
         }
 
-        private static void ConfigureIoc(IServiceCollection services)
+        private void ConfigureIoc(IServiceCollection services)
         {
+            services.AddScoped<IRepository<Book>, BookRepository>();
+            services.AddScoped<IRepository<Lender>, LenderRepository>();
             services.AddScoped<ICrudInteractor<Book>, CrudInteractor<Book>>();
             services.AddScoped<ICrudInteractor<Lender>, CrudInteractor<Lender>>();
+
+            var sqlConnectionString = "Server=.;Database=vault13;Trusted_Connection=True;";
+
+            services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(sqlConnectionString, builder =>
+                    {
+                        builder.MigrationsAssembly("Vault.DataBase");
+                    }));
+
+            DatabaseSeed.Seed(services.BuildServiceProvider().GetService<DataContext>());
         }
     }
 }

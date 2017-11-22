@@ -13,6 +13,7 @@ namespace Vault.UI.AdminForm
         private static void Main()
         {
             var api = new VaultAPI();
+            api.BaseUri = new Uri("http://localhost:55451");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

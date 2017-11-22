@@ -11,7 +11,7 @@ namespace Vault.Core
             Success = true;
         }
 
-        public OperationResult(string[] errorMessages) : base(errorMessages)
+        public OperationResult(params string[] errorMessages) : base(errorMessages)
         {
         }
 

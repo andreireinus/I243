@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vault.UI.Admin", "Vault.UI.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vault.UI.AdminForm", "Vault.UI.AdminForm\Vault.UI.AdminForm.csproj", "{752E9E3A-4F4D-429E-93DB-D4F2132E8CB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vault.UI.AdminRestApi", "Vault.UI.AdminRestApi\Vault.UI.AdminRestApi.csproj", "{ADA17DC0-D29F-42C5-BD8C-2809DF640853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vault.UI.AdminRestApi", "Vault.UI.AdminRestApi\Vault.UI.AdminRestApi.csproj", "{ADA17DC0-D29F-42C5-BD8C-2809DF640853}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vault.DataBase", "Vault.DataBase\Vault.DataBase.csproj", "{12C7BA69-8A2E-4F5B-BFF7-3CB313B49C74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{ADA17DC0-D29F-42C5-BD8C-2809DF640853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADA17DC0-D29F-42C5-BD8C-2809DF640853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADA17DC0-D29F-42C5-BD8C-2809DF640853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12C7BA69-8A2E-4F5B-BFF7-3CB313B49C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C7BA69-8A2E-4F5B-BFF7-3CB313B49C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C7BA69-8A2E-4F5B-BFF7-3CB313B49C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C7BA69-8A2E-4F5B-BFF7-3CB313B49C74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

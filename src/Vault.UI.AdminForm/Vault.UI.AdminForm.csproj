@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookChangeForm.Designer.cs">
+      <DependentUpon>BookChangeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientApi\IVaultAPI.cs" />
     <Compile Include="ClientApi\Models\Book.cs" />
     <Compile Include="ClientApi\Models\Lender.cs" />
@@ -59,6 +65,12 @@
     <Compile Include="ClientApi\Models\Picture.cs" />
     <Compile Include="ClientApi\VaultAPI.cs" />
     <Compile Include="ClientApi\VaultAPIExtensions.cs" />
+    <Compile Include="LendingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LendingForm.Designer.cs">
+      <DependentUpon>LendingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logic\DataSource.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -68,6 +80,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BookChangeForm.resx">
+      <DependentUpon>BookChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LendingForm.resx">
+      <DependentUpon>LendingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -37,12 +37,12 @@ namespace Vault.Core
                 return new OperationResult<Book>(new [] {"Library item not found in database."});
             }
 
-            item.Pictures = item.Pictures ?? new List<Picture>();
-            item.Pictures.Add(new Picture
-            {
-                Bytes = image,
-                Book = item,
-            });
+            //item.Pictures = item.Pictures ?? new List<Picture>();
+            //item.Pictures.Add(new Picture
+            //{
+            //    Bytes = image,
+            //    Book = item,
+            //});
 
             return await _repository.UpdateAsync(item);
         }
