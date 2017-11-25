@@ -264,13 +264,7 @@ namespace Vault.UI.AdminForm.ClientApi
         /// </param>
         /// <param name='name'>
         /// </param>
-        /// <param name='locationId'>
-        /// </param>
-        /// <param name='locationName'>
-        /// </param>
         /// <param name='isAvailable'>
-        /// </param>
-        /// <param name='pictures'>
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -287,7 +281,7 @@ namespace Vault.UI.AdminForm.ClientApi
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<Book>> BookCreateWithHttpMessagesAsync(int? id = default(int?), string author = default(string), string name = default(string), int? locationId = default(int?), string locationName = default(string), bool? isAvailable = default(bool?), IList<object> pictures = default(IList<object>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<Book>> BookCreateWithHttpMessagesAsync(int? id = default(int?), string author = default(string), string name = default(string), bool? isAvailable = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -299,10 +293,7 @@ namespace Vault.UI.AdminForm.ClientApi
                 tracingParameters.Add("id", id);
                 tracingParameters.Add("author", author);
                 tracingParameters.Add("name", name);
-                tracingParameters.Add("locationId", locationId);
-                tracingParameters.Add("locationName", locationName);
                 tracingParameters.Add("isAvailable", isAvailable);
-                tracingParameters.Add("pictures", pictures);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BookCreate", tracingParameters);
             }
@@ -322,31 +313,9 @@ namespace Vault.UI.AdminForm.ClientApi
             {
                 _queryParameters.Add(string.Format("Name={0}", System.Uri.EscapeDataString(name)));
             }
-            if (locationId != null)
-            {
-                _queryParameters.Add(string.Format("Location.Id={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(locationId, SerializationSettings).Trim('"'))));
-            }
-            if (locationName != null)
-            {
-                _queryParameters.Add(string.Format("Location.Name={0}", System.Uri.EscapeDataString(locationName)));
-            }
             if (isAvailable != null)
             {
                 _queryParameters.Add(string.Format("IsAvailable={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(isAvailable, SerializationSettings).Trim('"'))));
-            }
-            if (pictures != null)
-            {
-                if (pictures.Count == 0)
-                {
-                    _queryParameters.Add(string.Format("Pictures={0}", System.Uri.EscapeDataString(string.Empty)));
-                }
-                else
-                {
-                    foreach (var _item in pictures)
-                    {
-                        _queryParameters.Add(string.Format("Pictures={0}", System.Uri.EscapeDataString("" + _item)));
-                    }
-                }
             }
             if (_queryParameters.Count > 0)
             {
@@ -568,13 +537,7 @@ namespace Vault.UI.AdminForm.ClientApi
         /// </param>
         /// <param name='name'>
         /// </param>
-        /// <param name='locationId'>
-        /// </param>
-        /// <param name='locationName'>
-        /// </param>
         /// <param name='isAvailable'>
-        /// </param>
-        /// <param name='pictures'>
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -591,7 +554,7 @@ namespace Vault.UI.AdminForm.ClientApi
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<Book>> BookUpdateWithHttpMessagesAsync(int id, int id1, string author = default(string), string name = default(string), int? locationId = default(int?), string locationName = default(string), bool? isAvailable = default(bool?), IList<object> pictures = default(IList<object>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<Book>> BookUpdateWithHttpMessagesAsync(int id, int id1, string author = default(string), string name = default(string), bool? isAvailable = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -604,10 +567,7 @@ namespace Vault.UI.AdminForm.ClientApi
                 tracingParameters.Add("id1", id1);
                 tracingParameters.Add("author", author);
                 tracingParameters.Add("name", name);
-                tracingParameters.Add("locationId", locationId);
-                tracingParameters.Add("locationName", locationName);
                 tracingParameters.Add("isAvailable", isAvailable);
-                tracingParameters.Add("pictures", pictures);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BookUpdate", tracingParameters);
             }
@@ -625,31 +585,9 @@ namespace Vault.UI.AdminForm.ClientApi
             {
                 _queryParameters.Add(string.Format("Name={0}", System.Uri.EscapeDataString(name)));
             }
-            if (locationId != null)
-            {
-                _queryParameters.Add(string.Format("Location.Id={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(locationId, SerializationSettings).Trim('"'))));
-            }
-            if (locationName != null)
-            {
-                _queryParameters.Add(string.Format("Location.Name={0}", System.Uri.EscapeDataString(locationName)));
-            }
             if (isAvailable != null)
             {
                 _queryParameters.Add(string.Format("IsAvailable={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(isAvailable, SerializationSettings).Trim('"'))));
-            }
-            if (pictures != null)
-            {
-                if (pictures.Count == 0)
-                {
-                    _queryParameters.Add(string.Format("Pictures={0}", System.Uri.EscapeDataString(string.Empty)));
-                }
-                else
-                {
-                    foreach (var _item in pictures)
-                    {
-                        _queryParameters.Add(string.Format("Pictures={0}", System.Uri.EscapeDataString("" + _item)));
-                    }
-                }
             }
             if (_queryParameters.Count > 0)
             {
@@ -1283,6 +1221,798 @@ namespace Vault.UI.AdminForm.ClientApi
                 try
                 {
                     _result.Body = SafeJsonConvert.DeserializeObject<Lender>(_responseContent, DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <param name='bookId'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<HttpOperationResponse<LendingRecord>> LendingFindWithHttpMessagesAsync(int bookId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("bookId", bookId);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "LendingFind", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/Lending/find/{bookId}").ToString();
+            _url = _url.Replace("{bookId}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(bookId, SerializationSettings).Trim('"')));
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                if (_httpResponse.Content != null) {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                }
+                else {
+                    _responseContent = string.Empty;
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new HttpOperationResponse<LendingRecord>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<LendingRecord>(_responseContent, DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<HttpOperationResponse<IList<LendingRecord>>> LendingGetAllWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "LendingGetAll", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/Lending").ToString();
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                if (_httpResponse.Content != null) {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                }
+                else {
+                    _responseContent = string.Empty;
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new HttpOperationResponse<IList<LendingRecord>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<IList<LendingRecord>>(_responseContent, DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <param name='id'>
+        /// </param>
+        /// <param name='lenderId'>
+        /// </param>
+        /// <param name='lenderName'>
+        /// </param>
+        /// <param name='lenderEmail'>
+        /// </param>
+        /// <param name='lenderLendingHistory'>
+        /// </param>
+        /// <param name='bookId'>
+        /// </param>
+        /// <param name='bookAuthor'>
+        /// </param>
+        /// <param name='bookName'>
+        /// </param>
+        /// <param name='bookIsAvailable'>
+        /// </param>
+        /// <param name='fromParameter'>
+        /// </param>
+        /// <param name='to'>
+        /// </param>
+        /// <param name='returned'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<HttpOperationResponse<LendingRecord>> LendingCreateWithHttpMessagesAsync(int? id = default(int?), int? lenderId = default(int?), string lenderName = default(string), string lenderEmail = default(string), IList<object> lenderLendingHistory = default(IList<object>), int? bookId = default(int?), string bookAuthor = default(string), string bookName = default(string), bool? bookIsAvailable = default(bool?), System.DateTime? fromParameter = default(System.DateTime?), System.DateTime? to = default(System.DateTime?), System.DateTime? returned = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("id", id);
+                tracingParameters.Add("lenderId", lenderId);
+                tracingParameters.Add("lenderName", lenderName);
+                tracingParameters.Add("lenderEmail", lenderEmail);
+                tracingParameters.Add("lenderLendingHistory", lenderLendingHistory);
+                tracingParameters.Add("bookId", bookId);
+                tracingParameters.Add("bookAuthor", bookAuthor);
+                tracingParameters.Add("bookName", bookName);
+                tracingParameters.Add("bookIsAvailable", bookIsAvailable);
+                tracingParameters.Add("fromParameter", fromParameter);
+                tracingParameters.Add("to", to);
+                tracingParameters.Add("returned", returned);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "LendingCreate", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/Lending").ToString();
+            List<string> _queryParameters = new List<string>();
+            if (id != null)
+            {
+                _queryParameters.Add(string.Format("Id={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(id, SerializationSettings).Trim('"'))));
+            }
+            if (lenderId != null)
+            {
+                _queryParameters.Add(string.Format("Lender.Id={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(lenderId, SerializationSettings).Trim('"'))));
+            }
+            if (lenderName != null)
+            {
+                _queryParameters.Add(string.Format("Lender.Name={0}", System.Uri.EscapeDataString(lenderName)));
+            }
+            if (lenderEmail != null)
+            {
+                _queryParameters.Add(string.Format("Lender.Email={0}", System.Uri.EscapeDataString(lenderEmail)));
+            }
+            if (lenderLendingHistory != null)
+            {
+                if (lenderLendingHistory.Count == 0)
+                {
+                    _queryParameters.Add(string.Format("Lender.LendingHistory={0}", System.Uri.EscapeDataString(string.Empty)));
+                }
+                else
+                {
+                    foreach (var _item in lenderLendingHistory)
+                    {
+                        _queryParameters.Add(string.Format("Lender.LendingHistory={0}", System.Uri.EscapeDataString("" + _item)));
+                    }
+                }
+            }
+            if (bookId != null)
+            {
+                _queryParameters.Add(string.Format("Book.Id={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(bookId, SerializationSettings).Trim('"'))));
+            }
+            if (bookAuthor != null)
+            {
+                _queryParameters.Add(string.Format("Book.Author={0}", System.Uri.EscapeDataString(bookAuthor)));
+            }
+            if (bookName != null)
+            {
+                _queryParameters.Add(string.Format("Book.Name={0}", System.Uri.EscapeDataString(bookName)));
+            }
+            if (bookIsAvailable != null)
+            {
+                _queryParameters.Add(string.Format("Book.IsAvailable={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(bookIsAvailable, SerializationSettings).Trim('"'))));
+            }
+            if (fromParameter != null)
+            {
+                _queryParameters.Add(string.Format("From={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(fromParameter, SerializationSettings).Trim('"'))));
+            }
+            if (to != null)
+            {
+                _queryParameters.Add(string.Format("To={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(to, SerializationSettings).Trim('"'))));
+            }
+            if (returned != null)
+            {
+                _queryParameters.Add(string.Format("Returned={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(returned, SerializationSettings).Trim('"'))));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += "?" + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                if (_httpResponse.Content != null) {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                }
+                else {
+                    _responseContent = string.Empty;
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new HttpOperationResponse<LendingRecord>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<LendingRecord>(_responseContent, DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <param name='id'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<HttpOperationResponse<LendingRecord>> LendingGetWithHttpMessagesAsync(int id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("id", id);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "LendingGet", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/Lending/{id}").ToString();
+            _url = _url.Replace("{id}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(id, SerializationSettings).Trim('"')));
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                if (_httpResponse.Content != null) {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                }
+                else {
+                    _responseContent = string.Empty;
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new HttpOperationResponse<LendingRecord>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<LendingRecord>(_responseContent, DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <param name='id'>
+        /// </param>
+        /// <param name='id1'>
+        /// </param>
+        /// <param name='lenderId'>
+        /// </param>
+        /// <param name='lenderName'>
+        /// </param>
+        /// <param name='lenderEmail'>
+        /// </param>
+        /// <param name='lenderLendingHistory'>
+        /// </param>
+        /// <param name='bookId'>
+        /// </param>
+        /// <param name='bookAuthor'>
+        /// </param>
+        /// <param name='bookName'>
+        /// </param>
+        /// <param name='bookIsAvailable'>
+        /// </param>
+        /// <param name='fromParameter'>
+        /// </param>
+        /// <param name='to'>
+        /// </param>
+        /// <param name='returned'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<HttpOperationResponse<LendingRecord>> LendingUpdateWithHttpMessagesAsync(int id, int id1, int? lenderId = default(int?), string lenderName = default(string), string lenderEmail = default(string), IList<object> lenderLendingHistory = default(IList<object>), int? bookId = default(int?), string bookAuthor = default(string), string bookName = default(string), bool? bookIsAvailable = default(bool?), System.DateTime? fromParameter = default(System.DateTime?), System.DateTime? to = default(System.DateTime?), System.DateTime? returned = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("id", id);
+                tracingParameters.Add("id1", id1);
+                tracingParameters.Add("lenderId", lenderId);
+                tracingParameters.Add("lenderName", lenderName);
+                tracingParameters.Add("lenderEmail", lenderEmail);
+                tracingParameters.Add("lenderLendingHistory", lenderLendingHistory);
+                tracingParameters.Add("bookId", bookId);
+                tracingParameters.Add("bookAuthor", bookAuthor);
+                tracingParameters.Add("bookName", bookName);
+                tracingParameters.Add("bookIsAvailable", bookIsAvailable);
+                tracingParameters.Add("fromParameter", fromParameter);
+                tracingParameters.Add("to", to);
+                tracingParameters.Add("returned", returned);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "LendingUpdate", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/Lending/{id}").ToString();
+            _url = _url.Replace("{id}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(id, SerializationSettings).Trim('"')));
+            List<string> _queryParameters = new List<string>();
+            _queryParameters.Add(string.Format("Id={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(id1, SerializationSettings).Trim('"'))));
+            if (lenderId != null)
+            {
+                _queryParameters.Add(string.Format("Lender.Id={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(lenderId, SerializationSettings).Trim('"'))));
+            }
+            if (lenderName != null)
+            {
+                _queryParameters.Add(string.Format("Lender.Name={0}", System.Uri.EscapeDataString(lenderName)));
+            }
+            if (lenderEmail != null)
+            {
+                _queryParameters.Add(string.Format("Lender.Email={0}", System.Uri.EscapeDataString(lenderEmail)));
+            }
+            if (lenderLendingHistory != null)
+            {
+                if (lenderLendingHistory.Count == 0)
+                {
+                    _queryParameters.Add(string.Format("Lender.LendingHistory={0}", System.Uri.EscapeDataString(string.Empty)));
+                }
+                else
+                {
+                    foreach (var _item in lenderLendingHistory)
+                    {
+                        _queryParameters.Add(string.Format("Lender.LendingHistory={0}", System.Uri.EscapeDataString("" + _item)));
+                    }
+                }
+            }
+            if (bookId != null)
+            {
+                _queryParameters.Add(string.Format("Book.Id={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(bookId, SerializationSettings).Trim('"'))));
+            }
+            if (bookAuthor != null)
+            {
+                _queryParameters.Add(string.Format("Book.Author={0}", System.Uri.EscapeDataString(bookAuthor)));
+            }
+            if (bookName != null)
+            {
+                _queryParameters.Add(string.Format("Book.Name={0}", System.Uri.EscapeDataString(bookName)));
+            }
+            if (bookIsAvailable != null)
+            {
+                _queryParameters.Add(string.Format("Book.IsAvailable={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(bookIsAvailable, SerializationSettings).Trim('"'))));
+            }
+            if (fromParameter != null)
+            {
+                _queryParameters.Add(string.Format("From={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(fromParameter, SerializationSettings).Trim('"'))));
+            }
+            if (to != null)
+            {
+                _queryParameters.Add(string.Format("To={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(to, SerializationSettings).Trim('"'))));
+            }
+            if (returned != null)
+            {
+                _queryParameters.Add(string.Format("Returned={0}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(returned, SerializationSettings).Trim('"'))));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += "?" + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                if (_httpResponse.Content != null) {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                }
+                else {
+                    _responseContent = string.Empty;
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new HttpOperationResponse<LendingRecord>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<LendingRecord>(_responseContent, DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

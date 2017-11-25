@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.ddlLender = new System.Windows.Forms.ComboBox();
             this.lblErrors = new System.Windows.Forms.Label();
@@ -38,6 +39,10 @@
             this.dtReturned = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.lendingRecordBinder = new System.Windows.Forms.BindingSource(this.components);
+            this.lenderSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.lendingRecordBinder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lenderSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -51,11 +56,14 @@
             // 
             // ddlLender
             // 
+            this.ddlLender.DataSource = this.lenderSource;
+            this.ddlLender.DisplayMember = "Name";
             this.ddlLender.FormattingEnabled = true;
             this.ddlLender.Location = new System.Drawing.Point(73, 35);
             this.ddlLender.Name = "ddlLender";
             this.ddlLender.Size = new System.Drawing.Size(200, 21);
             this.ddlLender.TabIndex = 1;
+            this.ddlLender.ValueMember = "Id";
             // 
             // lblErrors
             // 
@@ -127,12 +135,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lenderSource
+            // 
+            this.lenderSource.DataSource = typeof(Vault.UI.AdminForm.ClientApi.Models.Lender);
+            // 
             // LendingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(309, 192);
-            this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
@@ -151,6 +162,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LendingForm";
             this.Load += new System.EventHandler(this.LendingForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.lendingRecordBinder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lenderSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +181,7 @@
         private System.Windows.Forms.DateTimePicker dtReturned;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.BindingSource lendingRecordBinder;
+        private System.Windows.Forms.BindingSource lenderSource;
     }
 }

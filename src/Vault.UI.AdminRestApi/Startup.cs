@@ -51,8 +51,10 @@ namespace Vault.UI.AdminRestApi
         {
             services.AddScoped<IRepository<Book>, BookRepository>();
             services.AddScoped<IRepository<Lender>, LenderRepository>();
+            services.AddScoped<IRepository<LendingRecord>, LendingRecordRepository>();
             services.AddScoped<ICrudInteractor<Book>, CrudInteractor<Book>>();
             services.AddScoped<ICrudInteractor<Lender>, CrudInteractor<Lender>>();
+            services.AddScoped<ICrudInteractor<LendingRecord>, CrudInteractor<LendingRecord>>();
 
             var sqlConnectionString = "Server=.;Database=vault13;Trusted_Connection=True;";
 

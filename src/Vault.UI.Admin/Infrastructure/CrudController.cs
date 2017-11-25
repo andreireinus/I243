@@ -38,7 +38,7 @@ namespace Vault.UI.Admin.Infrastructure
 
                 if (result.Success)
                 {
-                    return RedirectToAction("Details", result.Entity.Id);
+                    return RedirectToAction("Index");
                 }
 
                 ModelState.AddOperationResultErrors(result.ErrorMessages);
@@ -75,7 +75,7 @@ namespace Vault.UI.Admin.Infrastructure
                 result = await _interactor.UpdateAsync(MapFromUpdateViewModel(result.Entity, model));
                 if (result.Success)
                 {
-                    return RedirectToAction("Details", result.Entity.Id);
+                    return RedirectToAction("Index");
                 }
 
                 ModelState.AddOperationResultErrors(result.ErrorMessages);
@@ -95,6 +95,6 @@ namespace Vault.UI.Admin.Infrastructure
         public abstract Task<TCreateVm> FillViewModel(TCreateVm source);
         protected abstract Task<TUpdateVm> FillViewModel(TUpdateVm source);
         protected abstract TUpdateVm MapToUpdateViewModel(T entity);
-        protected abstract T MapFromUpdateViewModel(T souce, TUpdateVm model);
+        protected abstract T MapFromUpdateViewModel(T source, TUpdateVm model);
     }
 }

@@ -48,13 +48,7 @@ namespace Vault.UI.AdminForm.ClientApi
         /// </param>
         /// <param name='name'>
         /// </param>
-        /// <param name='locationId'>
-        /// </param>
-        /// <param name='locationName'>
-        /// </param>
         /// <param name='isAvailable'>
-        /// </param>
-        /// <param name='pictures'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -62,7 +56,7 @@ namespace Vault.UI.AdminForm.ClientApi
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Book>> BookCreateWithHttpMessagesAsync(int? id = default(int?), string author = default(string), string name = default(string), int? locationId = default(int?), string locationName = default(string), bool? isAvailable = default(bool?), IList<object> pictures = default(IList<object>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Book>> BookCreateWithHttpMessagesAsync(int? id = default(int?), string author = default(string), string name = default(string), bool? isAvailable = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='id'>
         /// </param>
@@ -82,13 +76,7 @@ namespace Vault.UI.AdminForm.ClientApi
         /// </param>
         /// <param name='name'>
         /// </param>
-        /// <param name='locationId'>
-        /// </param>
-        /// <param name='locationName'>
-        /// </param>
         /// <param name='isAvailable'>
-        /// </param>
-        /// <param name='pictures'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -96,7 +84,7 @@ namespace Vault.UI.AdminForm.ClientApi
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<Book>> BookUpdateWithHttpMessagesAsync(int id, int id1, string author = default(string), string name = default(string), int? locationId = default(int?), string locationName = default(string), bool? isAvailable = default(bool?), IList<object> pictures = default(IList<object>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Book>> BookUpdateWithHttpMessagesAsync(int id, int id1, string author = default(string), string name = default(string), bool? isAvailable = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -149,6 +137,100 @@ namespace Vault.UI.AdminForm.ClientApi
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<Lender>> LenderUpdateWithHttpMessagesAsync(int id, int id1, string name = default(string), string email = default(string), IList<object> lendingHistory = default(IList<object>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='bookId'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<LendingRecord>> LendingFindWithHttpMessagesAsync(int bookId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<IList<LendingRecord>>> LendingGetAllWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='id'>
+        /// </param>
+        /// <param name='lenderId'>
+        /// </param>
+        /// <param name='lenderName'>
+        /// </param>
+        /// <param name='lenderEmail'>
+        /// </param>
+        /// <param name='lenderLendingHistory'>
+        /// </param>
+        /// <param name='bookId'>
+        /// </param>
+        /// <param name='bookAuthor'>
+        /// </param>
+        /// <param name='bookName'>
+        /// </param>
+        /// <param name='bookIsAvailable'>
+        /// </param>
+        /// <param name='fromParameter'>
+        /// </param>
+        /// <param name='to'>
+        /// </param>
+        /// <param name='returned'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<LendingRecord>> LendingCreateWithHttpMessagesAsync(int? id = default(int?), int? lenderId = default(int?), string lenderName = default(string), string lenderEmail = default(string), IList<object> lenderLendingHistory = default(IList<object>), int? bookId = default(int?), string bookAuthor = default(string), string bookName = default(string), bool? bookIsAvailable = default(bool?), System.DateTime? fromParameter = default(System.DateTime?), System.DateTime? to = default(System.DateTime?), System.DateTime? returned = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='id'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<LendingRecord>> LendingGetWithHttpMessagesAsync(int id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='id'>
+        /// </param>
+        /// <param name='id1'>
+        /// </param>
+        /// <param name='lenderId'>
+        /// </param>
+        /// <param name='lenderName'>
+        /// </param>
+        /// <param name='lenderEmail'>
+        /// </param>
+        /// <param name='lenderLendingHistory'>
+        /// </param>
+        /// <param name='bookId'>
+        /// </param>
+        /// <param name='bookAuthor'>
+        /// </param>
+        /// <param name='bookName'>
+        /// </param>
+        /// <param name='bookIsAvailable'>
+        /// </param>
+        /// <param name='fromParameter'>
+        /// </param>
+        /// <param name='to'>
+        /// </param>
+        /// <param name='returned'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<LendingRecord>> LendingUpdateWithHttpMessagesAsync(int id, int id1, int? lenderId = default(int?), string lenderName = default(string), string lenderEmail = default(string), IList<object> lenderLendingHistory = default(IList<object>), int? bookId = default(int?), string bookAuthor = default(string), string bookName = default(string), bool? bookIsAvailable = default(bool?), System.DateTime? fromParameter = default(System.DateTime?), System.DateTime? to = default(System.DateTime?), System.DateTime? returned = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

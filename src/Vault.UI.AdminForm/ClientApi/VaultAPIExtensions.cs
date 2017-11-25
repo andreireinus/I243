@@ -20,14 +20,6 @@ namespace Vault.UI.AdminForm.ClientApi
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IList<Book> BookGetAll(this IVaultAPI operations)
-            {
-                return operations.BookGetAllAsync().GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -48,55 +40,17 @@ namespace Vault.UI.AdminForm.ClientApi
             /// </param>
             /// <param name='name'>
             /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='locationName'>
-            /// </param>
             /// <param name='isAvailable'>
-            /// </param>
-            /// <param name='pictures'>
-            /// </param>
-            public static Book BookCreate(this IVaultAPI operations, int? id = default(int?), string author = default(string), string name = default(string), int? locationId = default(int?), string locationName = default(string), bool? isAvailable = default(bool?), IList<object> pictures = default(IList<object>))
-            {
-                return operations.BookCreateAsync(id, author, name, locationId, locationName, isAvailable, pictures).GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='author'>
-            /// </param>
-            /// <param name='name'>
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='locationName'>
-            /// </param>
-            /// <param name='isAvailable'>
-            /// </param>
-            /// <param name='pictures'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Book> BookCreateAsync(this IVaultAPI operations, int? id = default(int?), string author = default(string), string name = default(string), int? locationId = default(int?), string locationName = default(string), bool? isAvailable = default(bool?), IList<object> pictures = default(IList<object>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Book> BookCreateAsync(this IVaultAPI operations, int? id = default(int?), string author = default(string), string name = default(string), bool? isAvailable = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BookCreateWithHttpMessagesAsync(id, author, name, locationId, locationName, isAvailable, pictures, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BookCreateWithHttpMessagesAsync(id, author, name, isAvailable, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static Book BookGet(this IVaultAPI operations, int id)
-            {
-                return operations.BookGetAsync(id).GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -126,55 +80,17 @@ namespace Vault.UI.AdminForm.ClientApi
             /// </param>
             /// <param name='name'>
             /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='locationName'>
-            /// </param>
             /// <param name='isAvailable'>
-            /// </param>
-            /// <param name='pictures'>
-            /// </param>
-            public static Book BookUpdate(this IVaultAPI operations, int id, int id1, string author = default(string), string name = default(string), int? locationId = default(int?), string locationName = default(string), bool? isAvailable = default(bool?), IList<object> pictures = default(IList<object>))
-            {
-                return operations.BookUpdateAsync(id, id1, author, name, locationId, locationName, isAvailable, pictures).GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='id1'>
-            /// </param>
-            /// <param name='author'>
-            /// </param>
-            /// <param name='name'>
-            /// </param>
-            /// <param name='locationId'>
-            /// </param>
-            /// <param name='locationName'>
-            /// </param>
-            /// <param name='isAvailable'>
-            /// </param>
-            /// <param name='pictures'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Book> BookUpdateAsync(this IVaultAPI operations, int id, int id1, string author = default(string), string name = default(string), int? locationId = default(int?), string locationName = default(string), bool? isAvailable = default(bool?), IList<object> pictures = default(IList<object>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Book> BookUpdateAsync(this IVaultAPI operations, int id, int id1, string author = default(string), string name = default(string), bool? isAvailable = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BookUpdateWithHttpMessagesAsync(id, id1, author, name, locationId, locationName, isAvailable, pictures, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BookUpdateWithHttpMessagesAsync(id, id1, author, name, isAvailable, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IList<Lender> LenderGetAll(this IVaultAPI operations)
-            {
-                return operations.LenderGetAllAsync().GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -202,22 +118,6 @@ namespace Vault.UI.AdminForm.ClientApi
             /// </param>
             /// <param name='lendingHistory'>
             /// </param>
-            public static Lender LenderCreate(this IVaultAPI operations, int? id = default(int?), string name = default(string), string email = default(string), IList<object> lendingHistory = default(IList<object>))
-            {
-                return operations.LenderCreateAsync(id, name, email, lendingHistory).GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='name'>
-            /// </param>
-            /// <param name='email'>
-            /// </param>
-            /// <param name='lendingHistory'>
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -227,16 +127,6 @@ namespace Vault.UI.AdminForm.ClientApi
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            public static Lender LenderGet(this IVaultAPI operations, int id)
-            {
-                return operations.LenderGetAsync(id).GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
@@ -268,9 +158,99 @@ namespace Vault.UI.AdminForm.ClientApi
             /// </param>
             /// <param name='lendingHistory'>
             /// </param>
-            public static Lender LenderUpdate(this IVaultAPI operations, int id, int id1, string name = default(string), string email = default(string), IList<object> lendingHistory = default(IList<object>))
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Lender> LenderUpdateAsync(this IVaultAPI operations, int id, int id1, string name = default(string), string email = default(string), IList<object> lendingHistory = default(IList<object>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                return operations.LenderUpdateAsync(id, id1, name, email, lendingHistory).GetAwaiter().GetResult();
+                using (var _result = await operations.LenderUpdateWithHttpMessagesAsync(id, id1, name, email, lendingHistory, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='bookId'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<LendingRecord> LendingFindAsync(this IVaultAPI operations, int bookId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.LendingFindWithHttpMessagesAsync(bookId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IList<LendingRecord>> LendingGetAllAsync(this IVaultAPI operations, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.LendingGetAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='id'>
+            /// </param>
+            /// <param name='lenderId'>
+            /// </param>
+            /// <param name='lenderName'>
+            /// </param>
+            /// <param name='lenderEmail'>
+            /// </param>
+            /// <param name='lenderLendingHistory'>
+            /// </param>
+            /// <param name='bookId'>
+            /// </param>
+            /// <param name='bookAuthor'>
+            /// </param>
+            /// <param name='bookName'>
+            /// </param>
+            /// <param name='bookIsAvailable'>
+            /// </param>
+            /// <param name='fromParameter'>
+            /// </param>
+            /// <param name='to'>
+            /// </param>
+            /// <param name='returned'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<LendingRecord> LendingCreateAsync(this IVaultAPI operations, int? id = default(int?), int? lenderId = default(int?), string lenderName = default(string), string lenderEmail = default(string), IList<object> lenderLendingHistory = default(IList<object>), int? bookId = default(int?), string bookAuthor = default(string), string bookName = default(string), bool? bookIsAvailable = default(bool?), System.DateTime? fromParameter = default(System.DateTime?), System.DateTime? to = default(System.DateTime?), System.DateTime? returned = default(System.DateTime?), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.LendingCreateWithHttpMessagesAsync(id, lenderId, lenderName, lenderEmail, lenderLendingHistory, bookId, bookAuthor, bookName, bookIsAvailable, fromParameter, to, returned, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='id'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<LendingRecord> LendingGetAsync(this IVaultAPI operations, int id, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.LendingGetWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <param name='operations'>
@@ -280,18 +260,34 @@ namespace Vault.UI.AdminForm.ClientApi
             /// </param>
             /// <param name='id1'>
             /// </param>
-            /// <param name='name'>
+            /// <param name='lenderId'>
             /// </param>
-            /// <param name='email'>
+            /// <param name='lenderName'>
             /// </param>
-            /// <param name='lendingHistory'>
+            /// <param name='lenderEmail'>
+            /// </param>
+            /// <param name='lenderLendingHistory'>
+            /// </param>
+            /// <param name='bookId'>
+            /// </param>
+            /// <param name='bookAuthor'>
+            /// </param>
+            /// <param name='bookName'>
+            /// </param>
+            /// <param name='bookIsAvailable'>
+            /// </param>
+            /// <param name='fromParameter'>
+            /// </param>
+            /// <param name='to'>
+            /// </param>
+            /// <param name='returned'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Lender> LenderUpdateAsync(this IVaultAPI operations, int id, int id1, string name = default(string), string email = default(string), IList<object> lendingHistory = default(IList<object>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LendingRecord> LendingUpdateAsync(this IVaultAPI operations, int id, int id1, int? lenderId = default(int?), string lenderName = default(string), string lenderEmail = default(string), IList<object> lenderLendingHistory = default(IList<object>), int? bookId = default(int?), string bookAuthor = default(string), string bookName = default(string), bool? bookIsAvailable = default(bool?), System.DateTime? fromParameter = default(System.DateTime?), System.DateTime? to = default(System.DateTime?), System.DateTime? returned = default(System.DateTime?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.LenderUpdateWithHttpMessagesAsync(id, id1, name, email, lendingHistory, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.LendingUpdateWithHttpMessagesAsync(id, id1, lenderId, lenderName, lenderEmail, lenderLendingHistory, bookId, bookAuthor, bookName, bookIsAvailable, fromParameter, to, returned, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

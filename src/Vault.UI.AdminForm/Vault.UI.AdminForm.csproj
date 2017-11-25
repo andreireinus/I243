@@ -101,6 +101,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Vault.UI.AdminForm.ClientApi.Models.Book.datasource" />
     <None Include="Properties\DataSources\Vault.UI.AdminForm.ClientApi.Models.Lender.datasource" />
+    <None Include="Properties\DataSources\Vault.UI.AdminForm.ClientApi.Models.LendingRecord.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

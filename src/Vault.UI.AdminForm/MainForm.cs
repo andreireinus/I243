@@ -88,10 +88,15 @@ namespace Vault.UI.AdminForm
 
         private void dgBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgBooks.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            if (dgBooks.Columns[e.ColumnIndex] is DataGridViewButtonColumn 
+                && e.RowIndex >= 0
+                && e.ColumnIndex == 3)
             {
                 var book = _books[e.RowIndex];
 
+                var record = new LendingRecord();
+                var form = new LendingForm(record, _api);
+                form.ShowDialog(this);
             }
         }
     }

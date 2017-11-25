@@ -8,6 +8,8 @@ namespace Vault.Core.Entities
         public string Author { get; set; }
         public string Name { get; set; }
         public bool IsAvailable { get; set; }
+        public Location Location { get; set; }
+
         //public virtual ICollection<Picture> Pictures { get; set; }
     }
 }

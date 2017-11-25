@@ -7,7 +7,6 @@ using Vault.UI.Admin.Models.Lender;
 
 namespace Vault.UI.Admin.Controllers
 {
-    
     public class LenderController : CrudController<Lender, IndexViewModel, CreateViewModel, EditViewModel>
     {
         public LenderController(ICrudInteractor<Lender> interactor) : base(interactor)
@@ -53,12 +52,12 @@ namespace Vault.UI.Admin.Controllers
             };
         }
 
-        protected override Lender MapFromUpdateViewModel(Lender souce, EditViewModel model)
+        protected override Lender MapFromUpdateViewModel(Lender source, EditViewModel model)
         {
-            souce.Name = model.Name;
-            souce.Email = model.Email;
+            source.Name = model.Name;
+            source.Email = model.Email;
 
-            return souce;
+            return source;
         }
     }
 }

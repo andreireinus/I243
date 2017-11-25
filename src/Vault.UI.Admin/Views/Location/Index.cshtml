@@ -1,7 +1,8 @@
-﻿@using Vault.UI.Admin.Models.Library
+﻿@using Vault.UI.Admin.Models.Location
 
 @model IEnumerable<IndexViewModel>
-<h2>Library</h2>
+
+<h2>Locations</h2>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -10,9 +11,6 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsAvailable)
             </th>
             <th></th>
         </tr>
@@ -23,9 +21,6 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsAvailable)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

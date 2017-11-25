@@ -7,8 +7,6 @@
 namespace Vault.UI.AdminForm.ClientApi.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     public partial class Book
@@ -24,14 +22,12 @@ namespace Vault.UI.AdminForm.ClientApi.Models
         /// <summary>
         /// Initializes a new instance of the Book class.
         /// </summary>
-        public Book(int? id = default(int?), string author = default(string), string name = default(string), Location location = default(Location), bool? isAvailable = default(bool?), IList<Picture> pictures = default(IList<Picture>))
+        public Book(int? id = default(int?), string author = default(string), string name = default(string), bool? isAvailable = default(bool?))
         {
             Id = id;
             Author = author;
             Name = name;
-            Location = location;
             IsAvailable = isAvailable;
-            Pictures = pictures;
             CustomInit();
         }
 
@@ -57,18 +53,8 @@ namespace Vault.UI.AdminForm.ClientApi.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public Location Location { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "isAvailable")]
         public bool? IsAvailable { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "pictures")]
-        public IList<Picture> Pictures { get; set; }
 
     }
 }

@@ -10,6 +10,8 @@ namespace Vault.DataBase
 
         public DbSet<Lender> Lenders { get; set; }
 
+        public DbSet<Location> Locations { get; set; }
+
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
             
