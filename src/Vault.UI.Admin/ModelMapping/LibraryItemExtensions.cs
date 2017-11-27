@@ -18,14 +18,12 @@ namespace Vault.UI.Admin.ModelMapping
 
         public static IndexViewModel[] ToViewModel(this Book[] items)
         {
-            return items.Select(i => new IndexViewModel()
+            return items.Select(i => new IndexViewModel
             {
                 Id = i.Id,
                 Name = i.Name,
                 IsAvailable = i.IsAvailable,
                 Location = i.Location.Name,
-
-
             }).ToArray();
         }
 

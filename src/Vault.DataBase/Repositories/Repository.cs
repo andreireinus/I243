@@ -15,7 +15,7 @@ namespace Vault.DataBase.Repositories
             _context = context;
         }
 
-        public IQueryable<T> Query()
+        public virtual IQueryable<T> Query()
         {
             return _context.Set<T>().AsQueryable();
         }

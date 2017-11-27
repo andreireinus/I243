@@ -60,6 +60,7 @@ namespace Vault.UI.Admin
             services.AddScoped<IRepository<Lender>, LenderRepository>();
             services.AddScoped<IRepository<LendingRecord>, LendingRecordRepository>();
             services.AddScoped<IRepository<Location>, LocationRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
 
 
             services.AddScoped<ICrudInteractor<Book>, CrudInteractor<Book>>();

@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Vault.UI.Admin.Models.Lender.IndexViewModel>
+    
+<h2>Lenders</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -25,8 +27,7 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { item.Id }) |
-                @Html.ActionLink("Details", "Details", new { item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { item.Id })
             </td>
         </tr>
 }

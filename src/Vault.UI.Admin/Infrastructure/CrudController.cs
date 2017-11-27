@@ -85,11 +85,6 @@ namespace Vault.UI.Admin.Infrastructure
             return View("Edit", model);
         }
 
-        public IActionResult Details(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public abstract TIndexVm[] MapToIndexViewModel(T[] source);
         public abstract T MapFromCreateViewModel(TCreateVm source);
         public abstract Task<TCreateVm> FillViewModel(TCreateVm source);
