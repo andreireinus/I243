@@ -6,7 +6,7 @@ namespace Vault.Core
 {
     public class LendingInteractor : CrudInteractor<LendingRecord>, ILendingInteractor
     {
-        public LendingInteractor(IRepository<LendingRecord> repository) : base(repository)
+        public LendingInteractor(IRepository<LendingRecord> bookRepository) : base(bookRepository)
         {
         }
 

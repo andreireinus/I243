@@ -9,9 +9,9 @@ namespace Vault.Core
     {
         private readonly IRepository<T> _repository;
 
-        public CrudInteractor(IRepository<T> repository)
+        public CrudInteractor(IRepository<T> bookRepository)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _repository = bookRepository ?? throw new ArgumentNullException(nameof(bookRepository));
         }
 
         public Task<OperationResult<T>> CreateAsync(T entity)

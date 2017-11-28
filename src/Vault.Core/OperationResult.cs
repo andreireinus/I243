@@ -15,6 +15,10 @@ namespace Vault.Core
         {
         }
 
+        public OperationResult(string message, params string[] errorMessages) : base(errorMessages.Concat(new[]{message}).ToArray())
+        {
+        }
+
         public T Entity { get; }
     }
 

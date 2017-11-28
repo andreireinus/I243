@@ -5,4 +5,5 @@ namespace Vault.Core.Repositories
     public interface ILenderRepository : IRepository<Lender>
     {
     }
+
 }

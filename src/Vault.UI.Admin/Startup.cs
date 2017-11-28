@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -58,12 +57,16 @@ namespace Vault.UI.Admin
         {
             services.AddScoped<IRepository<Book>, BookRepository>();
             services.AddScoped<IRepository<Lender>, LenderRepository>();
+            services.AddScoped<ILenderRepository, LenderRepository>();
             services.AddScoped<IRepository<LendingRecord>, LendingRecordRepository>();
+            services.AddScoped<ILendingRecordRepository, LendingRecordRepository>();
             services.AddScoped<IRepository<Location>, LocationRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
 
 
-            services.AddScoped<ICrudInteractor<Book>, CrudInteractor<Book>>();
+            services.AddScoped<ICrudInteractor<Book>, BookInteractor>();
+            services.AddScoped<IBookInteractor, BookInteractor>();
+
             services.AddScoped<ICrudInteractor<Lender>, CrudInteractor<Lender>>();
             services.AddScoped<ICrudInteractor<Location>, CrudInteractor<Location>>();
             services.AddScoped<ICrudInteractor<LendingRecord>, CrudInteractor<LendingRecord>>();
@@ -77,21 +80,7 @@ namespace Vault.UI.Admin
                 }));
 
             DatabaseSeed.Seed(services.BuildServiceProvider().GetService<DataContext>());
-
-            try
-            {
-                var provider = services.BuildServiceProvider();
-                var repo = provider.GetService<IRepository<Location>>();
-                var x = provider.GetService<ICrudInteractor<Location>>();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-
-
-
+            
             //services.AddScoped<LibraryAdministration>();
             //services.AddScoped<ILibraryItemRepository, LibraryItemRepository>();
             //services.AddScoped<ILendingRecordRepository, LendingRecordRepository>();

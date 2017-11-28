@@ -1,0 +1,45 @@
+﻿@model Vault.UI.Admin.Models.Library.LendingViewModel
+
+@{
+    ViewData["Title"] = "Lend";
+}
+
+<h2>Lend out</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="LendPost" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookId" />
+
+            <div class="form-group">
+                <p class="form-control-static">@Model.BookName</p>
+            </div>
+            <div class="form-group">
+                <label asp-for="LenderId" class="control-label"></label>
+                <select asp-for="LenderId" asp-items="@Model.Lenders" class="form-control"></select>
+                <span asp-validation-for="LenderId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="From" class="control-label"></label>
+                <input asp-for="From" type="date" class="form-control" />
+                <span asp-validation-for="From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To" class="control-label"></label>
+                <input asp-for="To" type="date" class="form-control" />
+                <span asp-validation-for="To" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

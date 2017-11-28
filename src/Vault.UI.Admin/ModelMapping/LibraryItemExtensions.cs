@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Vault.Core.Entities;
 using Vault.UI.Admin.Models.Library;
 
@@ -6,32 +7,24 @@ namespace Vault.UI.Admin.ModelMapping
 {
     public static class LibraryItemExtensions
     {
-        public static EditViewModel ToEditViewModel(this Book item)
-        {
-            return new EditViewModel
-            {
-                Id = item.Id,
-                Name = item.Name,
-                LocationId = item.Location.Id
-            };
-        }
-
-        public static IndexViewModel[] ToViewModel(this Book[] items)
+        public static IndexViewModel[] ToViewModel(this IEnumerable<Book> items)
         {
             return items.Select(i => new IndexViewModel
             {
                 Id = i.Id,
+                Author = i.Author,
                 Name = i.Name,
                 IsAvailable = i.IsAvailable,
                 Location = i.Location.Name,
             }).ToArray();
         }
 
-        public static Book ToLibaryItem(this CreateViewModel model)
+        public static Book ToBook(this CreateViewModel model)
         {
             return new Book
             {
                 IsAvailable = true,
+                Author = model.Author,
                 Name = model.Name,
                 Location = new Location
                 {
@@ -40,9 +33,15 @@ namespace Vault.UI.Admin.ModelMapping
             };
         }
 
-        public static Book ToLibaryItem(this EditViewModel source, Book destination)
+        public static Book ToBook(this EditViewModel source, Book destination)
         {
+            destination.Author = source.Author;
             destination.Name = source.Name;
+            if (destination.Location == null)
+            {
+                destination.Location = new Location();
+            }
+
             destination.Location.Id = source.LocationId;
 
             return destination;

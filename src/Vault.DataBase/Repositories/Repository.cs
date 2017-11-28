@@ -17,12 +17,12 @@ namespace Vault.DataBase.Repositories
 
         public virtual IQueryable<T> Query()
         {
-            return _context.Set<T>().AsQueryable();
+            return _context.Set<T>().AsNoTracking().AsQueryable();
         }
 
         public async Task<OperationResult<T>> GetAsync(int id)
         {
-            var result = await _context.Set<T>().FirstOrDefaultAsync(a => a.Id == id);
+            var result = await Query().FirstOrDefaultAsync(a => a.Id == id);
 
             if (result == default(T))
             {
