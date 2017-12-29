@@ -16,5 +16,9 @@ namespace Vault.Core.Entities
         [Required]
         public DateTime To { get; set; }
         public DateTime? Returned { get; set; }
+        [Required]
+        public int BookId { get; set; }
+        [Required]
+        public int LenderId { get; set; }
     }
 }

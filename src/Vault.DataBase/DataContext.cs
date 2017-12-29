@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Vault.Core;
 using Vault.Core.Entities;
 
 namespace Vault.DataBase
@@ -14,7 +17,7 @@ namespace Vault.DataBase
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            
+
         }
     }
 }

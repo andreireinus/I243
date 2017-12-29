@@ -38,8 +38,8 @@ namespace Vault.Core
             {
                 From = @from,
                 To = to,
-                Book = book,
-                Lender = lenderResult.Entity
+                BookId = bookId,
+                LenderId = lenderId
             };
 
             var createResult = await _lendingRepository.CreateAsync(record);

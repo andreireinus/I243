@@ -63,14 +63,12 @@ namespace Vault.UI.Admin
             services.AddScoped<IRepository<Location>, LocationRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
 
-
             services.AddScoped<ICrudInteractor<Book>, BookInteractor>();
             services.AddScoped<IBookInteractor, BookInteractor>();
-
             services.AddScoped<ICrudInteractor<Lender>, CrudInteractor<Lender>>();
             services.AddScoped<ICrudInteractor<Location>, CrudInteractor<Location>>();
             services.AddScoped<ICrudInteractor<LendingRecord>, CrudInteractor<LendingRecord>>();
-
+            services.AddScoped<ReportInteractor>();
 
             const string sqlConnectionString = "Server=.;Database=vault13;Trusted_Connection=True;";
             services.AddDbContext<DataContext>(options =>
@@ -80,21 +78,6 @@ namespace Vault.UI.Admin
                 }));
 
             DatabaseSeed.Seed(services.BuildServiceProvider().GetService<DataContext>());
-            
-            //services.AddScoped<LibraryAdministration>();
-            //services.AddScoped<ILibraryItemRepository, LibraryItemRepository>();
-            //services.AddScoped<ILendingRecordRepository, LendingRecordRepository>();
-            //services.AddScoped<ILocationRepository, LocationRepository>();
-
-
-            //services.AddScoped<IRepository<Book>, LibraryItemRepository>();
-            //services.AddScoped<IRepository<LendingRecord>, LendingRecordRepository>();
-            //services.AddScoped<IRepository<Location>, LocationRepository>();
-            //services.AddScoped<IRepository<Lender>, LenderRepository>();
-
-            //services.AddScoped<ICrudInteractor<Book>, CrudInteractor<Book>>();
-            //services.AddScoped<ICrudInteractor<Lender>, CrudInteractor<Lender>>();
-            //services.AddScoped<ICrudInteractor<Location>, CrudInteractor<Location>>();
         }
     }
 }

@@ -1,33 +1,32 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Vault.UI.Admin.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Vault.Core;
+using Vault.UI.Admin.ModelMapping;
 
 namespace Vault.UI.Admin.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ReportInteractor _interactor;
+
+        public HomeController(ReportInteractor interactor)
+        {
+            _interactor = interactor;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(_interactor.Available().ToViewModel("Available books", 0));
         }
 
-        public IActionResult About()
+        public IActionResult LoanedOut()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            return View("Index", _interactor.LoanedOut().ToViewModel("Loaded out books", 1));
         }
 
-        public IActionResult Contact()
+        public IActionResult Deadline()
         {
-            ViewData["Message"] = "Your contact page.";
+            return View("Index", _interactor.OverDeadline().ToViewModel("Over deadline", 2));
 
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
